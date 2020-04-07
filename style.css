@@ -1,30 +1,47 @@
 body{
   margin: 0;
   padding: 0;
-  background-image: url('b3.jpeg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url('b7.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+#tictactoe{
+  opacity: 0.6;
+  height: 135px;
+  width: 150px;
+}
+/* #ff0057
+ */.heading{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-family: 'Varela Round', sans-serif;
+  border: 3px solid #C5C1AC;
+  border-radius: 20px;
+  width: 250px;
+  height: 200px;
+}
+.heading:hover{
+  background-color: #627AE1;
+  opacity: 0.7;
+}
+.heading:hover h1{
+  color: #000;
+}
+.heading:hover #tictactoe{
+  opacity: 1;
+}
 .row{
-       position: relative;
-      top: 140px;
+      margin-top: 40px;
+       display: flex;
+  justify-content: center;
+  align-items: center;
     }
     .mode{
-      position: relative;
-      left: 27%;
-      right: 40%;
-      margin-right: 50px;
       margin-bottom: 40px;
       padding: 2px;
       padding-bottom: 3px;
       width:200px;
- }
- .icons{
-   display: flex;
-      justify-content:space-around;
-      align-items: center;
  }
  ul{
   display: flex;
@@ -34,16 +51,14 @@ body{
  li{
   margin-right: 30px;
  }
- li:hover{
-
- }
+ 
  .mode .top_part{
   opacity: 0.5;
   max-width: 200px;
   transition: 1s;
   transform: translateY(60px);
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 10px ;
   border-width: 0;
   background-color: #DEE3D7;
  }
@@ -59,19 +74,50 @@ body{
  padding: 3px;
  }
  .mode:hover .bottom_part{
-  transform: translateY(0px);
+  transform: translateY(-6px);
   opacity: 1;
  }
 .mode:hover .top_part{
   opacity: 0.8;
-  background-color: #ff0057;
+  background-color:#EDD436;
   transform: translateY(0);
 }
 #comp{
  font-size: 13px;
 }
  h1{
-  font-weight: 500;
+  font-weight: bolder;
+  color: #DEE3D7;
  }
+ .copyright{
+  color: #DEE3D7;
+ }
+.copyright:hover{
+  color: #EDD436;
+  cursor: pointer;
+}
+#instagram{
+  border: 1px solid;
+  border-width: 0;
+  border-radius: 50%;
+}
+.i:hover{
+  transition: 0.2s;
+  transition-timing-function: ease-in;
+  transform: scale(0.75);
+  opacity: 1;
+  cursor: pointer;
+}
+.i{
+  opacity: 0.8;
+}
+#mode{
+  font-weight: bolder;
+  color: #ff0057;
+  text-transform: capitalize;
+  opacity: 0.6;
+} 
+ 
+ 
  
 

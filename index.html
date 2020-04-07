@@ -4,25 +4,21 @@
   <title>Home page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://kit.fontawesome.com/f2ce051dd5.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
   <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
   <br>
-  <h1 class="text-center ">Tic Tac Toe</h1>
-  <div class="row ">
+  <center>
+    <div class="heading">
+    <h1 class="text-center">Tic Tac Toe</h1>
+    <img src="tic-tac-toe.png" id="tictactoe">
+  </div>
+  </center>
+    <div class="row">
     <div class="mode">
       <div class="top_part text-center" style="padding-top: 10px;">
       <img src="user.png" width="80">
@@ -43,13 +39,13 @@
       <button class="btn btn-outline-success" data-target="#playerInfo" data-toggle="modal">Play</button>
     </div>
     </div>
-  </div><br><br><br><br><br><br>
+  </div>
  <ul>
-   <li type="none"><i class="fab fa-facebook  fa-2x"></i></li>
-   <li type="none"><i class="fab fa-facebook fa-2x"></i></li>
-   <li type="none"> <i class="fab fa-github fa-2x"></i></li>
+   <li type="none" class="icon"><img src="facebook.png" width="30" class="i"></li>
+   <li type="none" class="icon"> <img src="instagram.png" width="30" class="i" id="instagram"></li>
+   <li type="none" class="icon"><img src="cat.png" width="31" class="i"></li>
  </ul>
- <center><p id="#copyright"> © Kunal Kumar Verma</p></center>
+ <center><p class="copyright"> © Kunal Kumar Verma</p></center>
 </div>
 <div class="modal fade" id="playerInfo">
    <div class="modal-dialog modal-dialog-centered">
@@ -60,11 +56,11 @@
        <div class="modal-body bg-green">
          <form>
            <div class="form-group">
-             <label><i class="far fa-user fa-2x fa-fw" area-hidden="true"></i>Player 1:</label>
+             <label><img src="user2.png" width="30">Player 1:</label>
              <input type="text" class="form-control" id="player1" placeholder="Player 1">
            </div>
            <div class="form-group">
-             <label><i class="far fa-user fa-2x fa-fw" area-hidden="true"></i>Player 2:</label>
+             <label><img src="user2.png" width="30">Player 2:</label>
              <input type="text" class="form-control" placeholder="Player 2">
            </div>
            <div class="form-group">
@@ -80,6 +76,15 @@
      </div>
    </div>
  </div>
- <script src="human.js"></script>
+<!--  <script src="human.js"></script> -->
+ <!-- <script src="https://kit.fontawesome.com/f2ce051dd5.js" crossorigin="anonymous"></script> -->
+ <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </body>
 </html>
