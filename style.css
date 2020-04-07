@@ -1,77 +1,100 @@
-body{
-  margin: 0;
-  padding: 0;
-  background-image: url('b3.jpeg');
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-.row{
-       position: relative;
-      top: 140px;
-    }
-    .mode{
-      position: relative;
-      left: 27%;
-      right: 40%;
-      margin-right: 50px;
-      margin-bottom: 40px;
-      padding: 2px;
-      padding-bottom: 3px;
-      width:200px;
+
+ *{
+ 	margin: 10px;
+ 	padding: 10px;
  }
- .icons{
-   display: flex;
-      justify-content:space-around;
-      align-items: center;
- }
- ul{
-  display: flex;
-  justify-content: center;
-  align-items: center;
- }
- li{
-  margin-right: 30px;
- }
- li:hover{
+ body{
+ 	background: #212121;
 
  }
- .mode .top_part{
-  opacity: 0.5;
-  max-width: 200px;
-  transition: 1s;
-  transform: translateY(60px);
-  border: 1px solid black;
-  border-radius: 10px;
-  border-width: 0;
-  background-color: #DEE3D7;
+ .table{
+ 	height: 700px;
+ 	width: 500px;
+ 	background-color: slategrey;
+ 	border: 3px slategrey solid;
+ 	border-radius: 10px;
  }
- .mode .bottom_part{
-  opacity: 0;
- max-width: 200px;
- transition: 1s;
- transform: translateY(-100px);
- border: 1px solid black;
-  border-radius: 10px;
-  border-width: 0;
- background-color: #CAD4BD;
- padding: 3px;
- }
- .mode:hover .bottom_part{
-  transform: translateY(0px);
-  opacity: 1;
- }
-.mode:hover .top_part{
-  opacity: 0.8;
-  background-color: #ff0057;
-  transform: translateY(0);
-}
-#comp{
- font-size: 13px;
-}
- h1{
-  font-weight: 500;
- }
- 
+ #h{
+ 	 font-family: 'Bebas Neue', cursive;
 
+ 	font-size: 4em;
+ 	 text-align: center;
+ 	 font-weight: lighter;
+ 	 color: white;
+ 	 margin: 0px;
+ 	 padding: 0px;
+ 	 
+ 	 
+ }
+ .flex{
+ 	
+ 	display: flex;
+ 	justify-content: space-around;
+ 	flex-direction: row;
+ 	
+ }
+ .box{
+ 	height: 95px;
+ 	width: 95px ;
+ 	border: 5px solid #212121;
+ 	border-radius: 5px;
+ 	margin: 0px;
+ 	padding: 0px;
+ 	background-color: #212121;
+ 	color: white;
+ 	font-size: 55px;
+ 	font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+ 	
+ }
+#reset{
+	background-color:#212121 ;
+	border: 2px;
+	border-radius: 3px;
+	color: white;
+	height: 50px;
+	width: 120px;
+}
+#reset:hover{
+	cursor: pointer;
+	background: #000;
+}
+.box:hover{
+	cursor: pointer;
+	background: #000;
+	border: 5px solid #000;
+}
+.human{
+	font-family: 'Roboto Mono', monospace;
+	color: white;
+	font-size: 1em;
+	padding: 0px;
+	margin: 0px;
+}
+.computer{
+	font-family: 'Roboto Mono', monospace;
+	color: white;
+	font-size: 1em;
+	padding: 0px;
+	margin: 0px;
+}
+.form{
+	width:500px;
+	height:20px;
+	background-color: grey;
+	border: 2px;
+}
+#play{
+	background-color:#212121 ;
+	border: 2px;
+	border-radius: 3px;
+	color: white;
+	height: 50px;
+	width: 120px;
+	padding: 0px;
+	margin: 0px;
+}
+#play:hover{
+	cursor: pointer;
+	background: #000;
+}
