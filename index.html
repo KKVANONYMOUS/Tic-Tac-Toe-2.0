@@ -15,69 +15,39 @@
   <center>
     <div class="heading">
     <h1 class="text-center">Tic Tac Toe</h1>
-    <img src="tic-tac-toe.png" id="tictactoe">
+    <img src="images/tic-tac-toe.png" id="tictactoe">
   </div>
   </center>
     <div class="row">
     <div class="mode">
       <div class="top_part text-center" style="padding-top: 10px;">
-      <img src="user.png" width="80">
+      <img src="images/user.png" width="80">
       <h3>Vs Human</h3>
     </div>
     <div class="bottom_part text-center">
       <p>In this mode you can play with your friends...Let's see who has more wit to win this game ;) </p>
-      <button class="btn btn-outline-success" data-target="#playerInfo" data-toggle="modal">Play</button>
+     <a href="Human.html"><button type="button" class="btn btn-outline-success">Play</button></a>
     </div>
     </div>
      <div class="mode">
       <div class="top_part  text-center">
-      <img src="tower-pc.png" width="90">
+      <img src="images/tower-pc.png" width="90">
       <h3>Vs Computer</h3>
     </div>
     <div class="bottom_part text-center">
       <p id="comp">This mode gives you a chance to play against computer...But I must tell you that you cannot defeat it..Don't believe it than just give it a try ;) </p>
-      <button class="btn btn-outline-success" data-target="#playerInfo" data-toggle="modal">Play</button>
+       <a href="AI.html"><button type="button" class="btn btn-outline-success">Play</button></a>
     </div>
     </div>
   </div>
  <ul>
-   <li type="none" class="icon"><img src="facebook.png" width="30" class="i"></li>
-   <li type="none" class="icon"> <img src="instagram.png" width="30" class="i" id="instagram"></li>
-   <li type="none" class="icon"><img src="cat.png" width="31" class="i"></li>
+   <li type="none" class="icon"><img src="images/facebook.png" width="30" class="i"></li>
+   <li type="none" class="icon"> <img src="images/instagram.png" width="30" class="i" id="instagram"></li>
+   <li type="none" class="icon"><img src="images/cat.png" width="31" class="i"></li>
  </ul>
  <center><p class="copyright"> © Kunal Kumar Verma</p></center>
 </div>
-<div class="modal fade" id="playerInfo">
-   <div class="modal-dialog modal-dialog-centered">
-     <div class="modal-content">
-       <div class="modal-header bg-warning">
-         <button class="close" data-dismiss="modal">&times;</button>
-       </div>
-       <div class="modal-body bg-green">
-         <form>
-           <div class="form-group">
-             <label><img src="user2.png" width="30">Player 1:</label>
-             <input type="text" class="form-control" id="player1" placeholder="Player 1">
-           </div>
-           <div class="form-group">
-             <label><img src="user2.png" width="30">Player 2:</label>
-             <input type="text" class="form-control" placeholder="Player 2">
-           </div>
-           <div class="form-group">
-             <label>Player 1 choose:</label>
-             <input type="text" class="form-control">
-           </div>
-         </form>
-         <div class="modal-footer justify-content-center">
-           <button class="btn btn-outline-info" onclick="takeInput()">Start
-           </button>
-         </div>
-       </div>
-     </div>
-   </div>
- </div>
-<!--  <script src="human.js"></script> -->
- <!-- <script src="https://kit.fontawesome.com/f2ce051dd5.js" crossorigin="anonymous"></script> -->
+ 
  <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
