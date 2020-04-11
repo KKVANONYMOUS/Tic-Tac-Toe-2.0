@@ -1,191 +1,290 @@
 $(window).on('load',function(){
 	$('#playerInfo').modal('show');
-   //the above code to dsiplay modal as soon as page loads
 
-//declaring and initialising various variables
-var huNamevalue;
-var aiNamevalue="Computer's";
+let huNamevalue;
+let aiNamevalue="Computer's";
 
-var Turndisplay=document.getElementById('Turndisplay');
 
-var huSymbol;
-var huSymbolValue;
-var aisymbolValue;
-
-var turn;
-var origboard=["","","","","","","","",""];
-         
-          
-var row;
-var column;
-var id;
-var nameDisplay;
+let huSymbol;
+let huSymbolValue;
+let aisymbolValue;
+let currentPlayer;
+let board=[["","",""],
+           ["","",""],
+           ["","",""]
+           ];
+let row;
+let column;
+let matchResult=document.getElementById('matchResult');
+let endGame=false;
 
 inputNstore=()=>{
-   huNamevalue=document.getElementById('player').value;
-   if(huNamevalue==""){
-huNamevalue="Your";
-}
-else
-huNamevalue=huNamevalue+"'s";
-   Turndisplay.innerText=huNamevalue + " Turn";
-    nameDisplay=huNamevalue;
 
+	//extracting human name value
+	huNamevalue=document.getElementById('player').value;
+   if(huNamevalue=="")
+     {
+     huNamevalue="dude";
+     }
+   
 
-//storing the symbol of player 1
- huSymbol=$("input[name='symbol']:checked");
-huSymbolValue=huSymbol.val();
-aisymbolValue = (huSymbolValue=="X")? "O":"X";
-turn=huSymbolValue;
+  //extracting symbol value
+  huSymbol=$("input[name='symbol']:checked");
+  huSymbolValue=huSymbol.val();
+  aisymbolValue = (huSymbolValue=="X")? "O":"X";
 
-}
-
-addSymbol=(event)=>{
-	id=event.getAttribute('id');
-var box=document.getElementById(id);
-if(box.innerText=="")
-    {
-	box.innerText=turn;
- 
-	
-    origboard[id]=turn;
-    console.log(origboard);
-     nameDisplay = aiNamevalue;
-	Turndisplay.innerText= nameDisplay + "'s Turn";
-
-	 turn=aisymbolValue;
-
-     aiMove(origboard,aisymbolValue);
-    
-    origboard[id]=turn;
-
-     turn=huSymbolValue;
-
-      nameDisplay = huNamevalue;
-	Turndisplay.innerText= nameDisplay + "'s Turn";
-
-    }
-
-}
-
-//computerMove function 
-aiMove=(origboard,aisymbolValue)=>{
-
-	var bestSpot=minimax(origboard,aisymbolValue).index;
-	document.getElementById(bestSpot).innerText=aisymbolValue;
-}
-
-minimax=(newBoard, player)=>{
-
-var availSpots = blankBox(newBoard);
-
-  // checks for the terminal states such as win, lose, and tie and returning a value accordingly
-  if (winning(newBoard, huSymbolValue)){
-     return {score:-10};
-     
-  }
-	else if (winning(newBoard, aisymbolValue)){
-    return {score:10};
-    
-	}
-  else if (availSpots.length === 0){
-  	return {score:0};
-  	
-  }
-
-// an array to collect all the objects
-  var moves = [];
-
-  // loop through available spots
-  for (var i = 0; i < availSpots.length; i++){
-    //create an object for each and store the index of that spot that was stored as a number in the object's index key
-    var move = {};
-  	move.index = newBoard[availSpots[i]];
-
-    // set the empty spot to the current player
-    newBoard[availSpots[i]] = player;
-
-    //if collect the score resulted from calling minimax on the opponent of the current player
-    if (player == aisymbolValue){
-      var result = minimax(newBoard, huSymbolValue);
-      move.score = result.score;
-    }
-    else{
-      var result = minimax(newBoard, aisymbolValue);
-      move.score = result.score;
-    }
-
-    //reset the spot to empty
-    newBoard[availSpots[i]] = move.index;
-
-    // push the object to the array
-    moves.push(move);
-  }
-
-// if it is the computer's turn loop over the moves and choose the move with the highest score
-  var bestMove;
-  if(player === aisymbolValue){
-    var bestScore = -10000;
-    for(var i = 0; i < moves.length; i++){
-      if(moves[i].score > bestScore){
-        bestScore = moves[i].score;
-        bestMove = i;
-      }
-    }
-  }else{
-
-// else loop over the moves and choose the move with the lowest score
-    var bestScore = 10000;
-    for(var i = 0; i < moves.length; i++){
-      if(moves[i].score < bestScore){
-        bestScore = moves[i].score;
-        bestMove = i;
-      }
-    }
-  }
-
-// return the chosen move (object) from the array to the higher depth
-  return moves[bestMove];
-
-}
-
- blankBox=(board)=>{
- 	var i;
- 	var emptySpot= new Array();
- 	for(i=0;i<9;i++){
- 		if(board[i]!="X" && board[i]!="O")
- 		{
- 			emptySpot.push(i);
- 		}
-
- 	}
- 	return emptySpot;
+  //ai will go first
+  aiMove();
   
 }
 
+addSymbol=(event)=>{
+   let id=event.getAttribute('id');
+   let cell=document.getElementById(id);
+   if(!endGame){
+   	if(cell.innerText=="")
+   {
+   	cell.innerText=huSymbolValue;
+   	row=rowNo(id);
+   	column=colNo(id);
+   	board[row][column]=huSymbolValue;
+   	aiMove();
+   	
+  let result=checkWinner(board);
+  if (result!==null && result!="tie")
+  {   
+  	matchResult.innerText="Oh " + huNamevalue + " you lost!!!";
+     showModal();
+     endGame=true;
+  }
+  else if(result=="tie")
+  {
+     matchResult.innerText="I bet you can't do better than this!!!";
+     showModal();
+     endGame=true;
+  }
 
- winning=(board, player)=>{
- if (
-        (board[0] == player && board[1] == player && board[2] == player) ||
-        (board[3] == player && board[4] == player && board[5] == player) ||
-        (board[6] == player && board[7] == player && board[8] == player) ||
-        (board[0] == player && board[3] == player && board[6] == player) ||
-        (board[1] == player && board[4] == player && board[7] == player) ||
-        (board[2] == player && board[5] == player && board[8] == player) ||
-        (board[0] == player && board[4] == player && board[8] == player) ||
-        (board[2] == player && board[4] == player && board[6] == player)
-        ) {
-        return true;
-    } else {
-        return false;
+   }
+   }
+   
+}
+
+showModal=()=>{
+	$("#resultDisplayer").modal("show");
+}
+
+//aiMove funtion
+aiMove=()=>{
+let bestScore=-Infinity;
+let move;
+for(let i=0;i<3;i++)
+{
+	for(let j=0;j<3;j++)
+	{
+		if(board[i][j]=="")
+		{
+			board[i][j]=aisymbolValue;
+			let score=minimax(board,0,false);
+			board[i][j]="";
+			if(score>bestScore)
+			{
+				bestScore=score;
+				move={c:i,d:j};
+			}
+		}
+	}
+}
+
+board[move.c][move.d]=aisymbolValue;
+
+
+let bestSpot;
+if(move.c==0 && move.d==0)
+bestSpot=0;
+if(move.c==0 && move.d==1)
+bestSpot=1;
+if(move.c==0 && move.d==2)
+bestSpot=2;
+if(move.c==1 && move.d==0)
+bestSpot=3;
+if(move.c==1 && move.d==1)
+bestSpot=4;
+if(move.c==1 && move.d==2)
+bestSpot=5;
+if(move.c==2 && move.d==0)
+bestSpot=6;
+if(move.c==2 && move.d==1)
+bestSpot=7;
+if(move.c==2 && move.d==2)
+bestSpot=8;
+
+document.getElementById(bestSpot).innerText=aisymbolValue;
+// currentPlayer=huNamevalue;
+// Turndisplay.innerText=currentPlayer + " Turn";
+}
+
+//minimax function
+minimax=(board,depth,isMaximizing)=>{
+	let result=checkWinner(board);
+	if(result!==null){
+		
+		
+		if (result==huSymbolValue)
+		{
+			return -10;
+		}
+	else if(result==aisymbolValue)
+		{
+			return 10;
+		}
+	else if(result=="tie") 
+		{
+			return 0;
+		}
+		
+	}
+
+   if(isMaximizing)
+   {
+   	let bestScore=-Infinity;
+    for(let i=0;i<3;i++){
+	 for(let j=0;j<3;j++){
+		if(board[i][j]==""){
+			board[i][j]=aisymbolValue;
+			let score=minimax(board,depth + 1,false);
+			board[i][j]="";
+			if(score>bestScore){
+				bestScore=score;
+			}
+			
+		}
+	}
+ }
+return bestScore;
+   }
+ else{
+ 		let bestScore=Infinity;
+    for(let i=0;i<3;i++){
+	for(let j=0;j<3;j++){
+		if(board[i][j]==""){
+			board[i][j]=huSymbolValue;
+			let score=minimax(board,depth + 1,true);
+			board[i][j]="";
+			if(score<bestScore){
+				bestScore=score;
+			}
+		}
+	}
+}
+return bestScore;
+ }  
+
+}
+
+
+//checking winner and draw
+
+checkWinner=(board)=>{
+	let winner=null;
+	
+        for(let i=0;i<3;i++)
+        {
+        	if(board[i][0] != "" && board[i][0] == board[i][1] &&  board[i][1]==board[i][2])
+           {
+           	if (board[i][0]==aisymbolValue)
+           		{
+           			winner = aisymbolValue;
+           		}
+           	else if(board[i][0]==huSymbolValue)
+           		{
+           			winner = huSymbolValue;
+           		}
+           }
+           
+        }
+        for(let j=0;j<3;j++)
+        {
+        	if(board[0][j] != "" && board[0][j] == board[1][j] && board[1][j]==board[2][j])
+           {
+           	
+           	if (board[0][j]==aisymbolValue)
+           		{
+           			winner = aisymbolValue;
+           		}
+           	else if(board[0][j]==huSymbolValue)
+           		{
+           			winner = huSymbolValue;
+           		}
+           }
+        }
+        if(board[0][0] != "" && board[0][0] == board[1][1] && board[1][1] == board[2][2])
+      { 
+           	if (board[0][0]==aisymbolValue)
+           		{
+           			winner = aisymbolValue;
+           		}
+           	else if(board[0][0]==huSymbolValue)
+           		{
+           			winner = huSymbolValue;
+           		}
+           }
+        if(board[0][2] != "" && board[0][2] == board[1][1] && board[1][1] == board[2][0])
+        {
+        	
+           	if (board[0][2]==aisymbolValue)
+           		{
+           			winner = aisymbolValue;
+           		}
+           else if(board[0][2]==huSymbolValue)
+           		{
+           			winner = huSymbolValue;
+           		}
+           }
+
+         let availSpots=0;
+        
+         for(let i=0;i<3;i++)
+    {
+    	for(let j=0;j<3;j++)
+    	{
+    		if(board[i][j]==""){
+    			availSpots++;
+    		}
+    	}
     }
+         if(winner==null && availSpots==0){
+         	return "tie";
+         }
+         else{
+         	return winner;
+         }
+   
+}
+//restBoard
+resetBoard=()=>{
+board=[
+          ["","",""],
+          ["","",""],
+          ["","",""]
+          ];
+
+var boxes=document.querySelectorAll('.box');
+var i;
+for(i=0;i<boxes.length;i++){
+	boxes[i].innerText=' '; 
+} 
+endGame=false;
+aiMove();
 }
 
-colNo=()=>{
-	return  id % 3;
+//finding column no.
+colNo=(e)=>{
+	return  e % 3;
 }
 
-rowNo=()=>{
-	return Math.floor(id/3);
+//finding row no.
+rowNo=(e)=>{
+	return Math.floor(e/3);
 }
+
 });

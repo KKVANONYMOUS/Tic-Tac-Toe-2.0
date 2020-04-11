@@ -59,7 +59,6 @@ body{
 }
 .box:hover{
 	cursor: pointer;
-	background-color: #fff;
 	opacity: 0.7;
 	transition: 0.5s;
 	transition-timing-function: linear;

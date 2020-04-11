@@ -90,7 +90,6 @@ if(box.innerText==""){
                   p2Score.innerText=c;
                   document.getElementById('matchResult').innerText=p2nameValue+" "+"won!";
                   $("#resultDisplayer").modal("show");
-                  // document.getElementById("resultDisplayer").toggle('show');
                   resetBoard();
                   turn=p2symbolValue;
                   }
