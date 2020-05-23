@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ad6a36fa-a375-4613-bfc9-f425aa5108df/deploy-status)](https://app.netlify.com/sites/kind-banach-700183/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ad6a36fa-a375-4613-bfc9-f425aa5108df/deploy-status)](https://app.netlify.com/sites/kind-banach-700183/deploys)<br>
 This is my upgraded and enhanced version of Tic Tac Toe which was made by me during winter task.
 About the game:
 SINGLE PLAYER MODE:-
