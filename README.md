@@ -1,4 +1,6 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/ad6a36fa-a375-4613-bfc9-f425aa5108df/deploy-status)](https://app.netlify.com/sites/kind-banach-700183/deploys)<br>
+[![Netlify Status](https://api.netlify.com/api/v1/badges/ad6a36fa-a375-4613-bfc9-f425aa5108df/deploy-status)](https://app.netlify.com/sites/kind-banach-700183/deploys)
+![GitHub commit merge status](https://img.shields.io/github/commit-status/kkvanonymous/Tic-Tac-Toe-2.0/master/085d787b9c203192c648bed88ebb2e86974caa55) 
+![GitHub language count](https://img.shields.io/github/languages/count/kkvanonymous/Tic-Tac-Toe-2.0)<br>
 This is my upgraded and enhanced version of Tic Tac Toe which was made by me during winter task.<br>
 # About the game:
 <b>SINGLE PLAYER MODE:-</b>
